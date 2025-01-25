@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    form(method="post" action="/register/createuser" encType="multipart/form-data")
+        label(for="uname") Username
+        input(type="text" name="uname" placeholder="Enter username")
+        label(for="email") Email
+        input(type="email" name="email" placeholder="Enter email")
+        label(for="name") Name
+        input(type="text" name="name" placeholder="Enter name")
+        label(for="pass") Password
+        input(type="password" name="password" placeholder="Enter password")
+        input(type="file" name="dp")
+        button Register User

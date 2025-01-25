@@ -1,38 +1,217 @@
 .App {
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-wrapper {
+  height: 140px;
+  max-height: 150px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 90vw;
+  background-color: white;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  margin: 0px;
+  padding: 5px 5vw;
+  font-weight: bold;
+}
+
+.App-header:nth-child(1) {
+  border-bottom: 1px solid #e7e7e5;
+}
+
+.App-header-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header-logo {
+  height: 100%;
+  width: 50px;
+  border-radius: 50px;
+}
+
+.icons {
+  max-width: 48px;
+  max-height: 48px;
+  margin: 0px 5px;
+}
+
+.App-header-button {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  max-height: 48px;
+  max-width: 104px;
+  padding: 5px 12px;
+  border: 1px solid #165d59;
+  border-radius: 5px;
+  color: 'black';
+}
+
+.App-header-button:hover {
+  cursor: pointer;
+}
+
+.App-header-button:visited {
+  color: black;
+}
+
+.Lower-app-bar {
+  width: 70vw;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 15vw;
+}
+
+.Lower-app-bar-item {
+  text-align: center;
+  width: 20%;
+  font-size: small;
+  vertical-align: middle;
+}
+
+div.jumbotron-wrapper {
+  width: 100vw;
+  height: 180px;
+  background-color: #162c2a;
+}
+
+div.jumbotron {
+  height: 100%;
+  max-width: 1400px; 
+  margin: 0px auto;
+  background-image: url(https://images.apollo247.in/images/ui_revamp_searchBanner1.svg),url(https://images.apollo247.in/images/ui_revamp_searchBanner2.svg);
+  background-position: 0 100%, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+div.jumbotron h2 {
   color: white;
+  font-size: xx-large;
+  padding: 20px 0px;
+  margin: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+input.search-bar {
+  height: 15%;
+  width: 40%;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main {
+  width: 80%;
+  margin: 10px 10%;
+}
+
+main .shortcuts {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  margin: 20px auto;
+}
+
+main .shortcuts span:nth-child(1) {
+  background-color: #E5F9F8;
+}
+
+main .shortcuts span {
+  width: 18%;
+  height: 100%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+main .shortcuts span:nth-child(2) {
+  background-color: #E9FAEE;
+}
+
+main .shortcuts span:nth-child(3) {
+  background-color: #F1EDFD;
+}
+
+main .shortcuts span:nth-child(4) {
+  background-color: #FFF3D6;
+}
+
+main .shortcuts span:nth-child(5) {
+  background: #FCEDF2;
+}
+
+main .shortcuts > span > div > img {
+  max-height: 38px;
+  max-width: 47px;
+}
+
+main .shortcuts > span > div:nth-child(2) p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 50px 0px;
+}
+
+.link img {
+  max-width: 100%;
+  height: auto;
+}
+
+.medicines {
+  display: flex;
+  justify-content: space-between;
+}
+
+.medicines > div {
+  width: 40vw;
+}
+
+footer {
+  background-color: #e5f9f8;
+  margin: 60px 0px 0px 0px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0px;
+}
+
+footer > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+footer > ul:nth-child(1) {
+  margin: 15% 0px 0px 0px;
+}
+
+footer > ul:nth-child(3) {
+  margin: 10px 0px 0px 0px;
+}
+
+footer ul > ul {
+  width: 20%;
+}
+
+footer ul ul li {
+  width: 100%;
+}
+
+footer ul li p {
+  text-align: center;
 }
