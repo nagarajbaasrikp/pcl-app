@@ -6,8 +6,17 @@ import Homepage from './Homepage';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import Account from './Account';
+import Hospitals from './Hospitals';
+import Pharmacies from './Pharmacies';
+import Medicines from './Medicines';
+import Doctors from './Doctors';
+import Laborities from './Laboratories';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import About from './About';
+import Services from './Services';
+import SearchResults from './SearchResults';
+import NotSearchResults from './NotSearchResults';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +28,13 @@ root.render(
           <Route path='login' element={<Login />} />
           <Route path='create-user' element={<CreateUser />} />
           <Route path='user-account/:id' element={< Account/>} />
+          <Route path='medicines' element={<Medicines />} />
+          <Route path='doctors' element={<Doctors />} />
+          <Route path='labs' element={<Laborities />} />
+          <Route path='hospitals' element={<Hospitals />} />
+          <Route path='pharmacies' element={<Pharmacies />} />
+          <Route path='about-us' element={<About />} />
+          <Route path='services' element={<Services />} />
         </Route>
       </Routes>
     </BrowserRouter>

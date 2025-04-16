@@ -6,6 +6,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 var usersRouter = require('./routes/users');
+var doctorsRouter = require('./routes/doctors');
+var pharmaciesRouter = require('./routes/pharmacies');
+var medicinesRouter = require('./routes/medicines');
+var laboratoriesRouter = require('./routes/laboratories');
+var hospitalsRouter = require('./routes/hospitals');
 
 var app = express();
 
@@ -44,6 +49,11 @@ app.use(cors({
 }));
 
 app.use('/users', usersRouter);
+app.use('/doctors', doctorsRouter);
+app.use('/pharmacies', pharmaciesRouter);
+app.use('/medicines', medicinesRouter);
+app.use('/laboratories', laboratoriesRouter);
+app.use('/hospitals', hospitalsRouter);
 
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development

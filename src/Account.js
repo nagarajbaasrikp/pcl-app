@@ -17,6 +17,7 @@ const Account = () => {
 
     return (
         <>
+            <h1>Account Information</h1>
             <p>Name: {userOb.name}</p>
             <p>Email: {userOb.email}</p>
             <p>Age: {userOb.age}</p>

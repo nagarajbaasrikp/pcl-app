@@ -20,6 +20,7 @@ const CreateUser = () => {
 
     return (
         <div>
+            <h2>Create User</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input name="name" placeholder="Enter Your Name" />

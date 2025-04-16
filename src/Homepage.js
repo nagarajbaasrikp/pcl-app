@@ -1,91 +1,108 @@
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import './App.css'
+import './App.css';
+import NotSearchResults from './NotSearchResults';
+import SearchResults from './SearchResults';
 
-const Homepage = () => (
-    <>
+const Homepage = () => {
+
+    const [value, setValue] = useState('doctors');
+    const [searchResults, setSearchResults] = useState([]);
+    const [data, setData] = useState([]);
+    const [searching, setSearching] = useState(false)
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/${value}`).then(res => setData(res.data)).catch(err => console.log(err));
+    }, []);
+
+    const retrieveData = data => {
+        axios.get(`http://localhost:3001/${data}`).then(res => setData(res.data)).catch(err => console.log(err));
+    }
+
+    const handleClick = e => {
+        setValue(e.target.value);
+        retrieveData(e.target.value);
+    }
+
+    useEffect(() => {
+        console.log(searchResults);
+    }, [searchResults])
+
+    const onSearchTermEnter = e => {
+        e.preventDefault();
+        setSearchResults([]);
+        if(searching) {
+        const results = data.filter(item => {
+            for(const property in item) {
+             //console.log(typeof(property), property, item[property]);
+             if(Array.isArray(item[property])) {
+                 for(let i = 0; i < item[property].length; i++)
+                     if(String(item[property][i]).toLowerCase().includes(e.target.value)) {
+                         //console.log(item, item[property][i]);
+                         return item
+                     }
+             }
+             else if(typeof(item[property]) == 'object') {
+                 //console.log(item[property], 'entered');
+                 for(const subProperty in item[property]) {
+                     //console.log(subProperty, item[property][subProperty]);
+                     if(String(item[property][subProperty]).toLowerCase().includes(e.target.value)) {
+                         //console.log(item[property][subProperty]);
+                         return item;
+                     }
+                 }
+             }
+             else {
+                 if(String(item[property]).toLowerCase().includes(e.target.value)) {
+                     //console.log(item[property], item);
+                     return item
+                 }
+            }
+        }})
+        setSearchResults(results);
+        //if()
+        //console.log(searchResults, typeof(searchResults));
+        }
+    }
+
+    const disableSearch = () => {
+        setSearching(false);
+        setSearchResults([]);
+    }
+
+    const enableSearch = () => {
+        setSearching(true);
+    }
+
+    return (
+        <>
         <div className='jumbotron-wrapper'>
             <div className="jumbotron">
                 <h2>Buy Medicines and Essentials</h2>
-                <input className='search-bar' type='text' placeholder='Search Medicines' /  >
+                <form>
+                    <input onFocus={enableSearch} onBlur={disableSearch} onChange={onSearchTermEnter} name='search' className='search-bar' type='search' placeholder='Search Medicines' />
+                    <label htmlFor='selectsearch'>Search...</label>
+                    <select onChange={handleClick} name='selectsearch'>
+                        <option value='doctors'>Doctors</option>
+                        <option value='hospitals'>Hospitals</option>
+                        <option value='pharmacies'>Pharmacies</option>
+                        <option value='laboratories'>Laboratories</option>
+                        <option value='medicines'>Medicines</option>
+                    </select>
+                </form>
             </div>
         </div>
          <main>
-            <div className='shortcuts'>
-                <span>
-                    <div>
-                        <img src='https://images.apollo247.in/pub/media/store_icon_image.png?tr=w-120,q-100,f-webp,c-at_max' alt='Error' />
-                    </div>
-                    <div>
-                        <p>Pharmacy Near Me</p>
-                        <p>Find Store</p>
-                    </div>
-                    <div>
-                        <ChevronRightIcon />
-                    </div>
-                </span>
-                <span>
-                    <div>
-                        <img src='https://images.apollo247.in/images/ui_revamp_orderviaprescription.svg?tr=w-120,q-100,f-webp,c-at_max' alt='Error' />
-                    </div>
-                    <div>
-                    <p>Get 15% off on Medicines</p>
-                    <p>Upload Now</p>
-                    </div>
-                    <ChevronRightIcon />
-                </span>
-                <span>
-                    <div>
-                        <img src='https://images.apollo247.in/images/ui_revamp_hospitalVisit.svg?tr=w-120,q-100,f-webp,c-at_max' alt='Error' />
-                    </div>
-                    <div>
-                        <p>Hospital Visit</p>
-                        <p>Pre-book</p>
-                    </div>
-                    <ChevronRightIcon />
-                </span>
-                <span>
-                    <div>
-                        <img src='https://images.apollo247.in/images/ui_revamp_video_consult.svg?tr=w-120,q-100,f-webp,c-at_max' alt='Error' />
-                    </div>
-                    <div>
-                        <p>Video Consult</p>
-                        <p>In 15 Minutes</p>
-                    </div>
-                    <ChevronRightIcon />
-                </span>
-                <span>
-                    <div>
-                        <img src='https://images.apollo247.in/images/ui_revamp_labtest.svg?tr=w-120,q-100,f-webp,c-at_max' alt='Error' />
-                     </div>
-                    <div>
-                        <p>Lab Tests</p>
-                        <p>At Home</p>
-                    </div>
-                    <ChevronRightIcon />
-                </span>
-            </div>
-            <div className='link'>
-                <img src='https://images.apollo247.in/images/category/consult_doctor_symtom_checker_web_new..jpeg?tr=w-1276,q-60,f-webp,dpr-1.1100000143051147,c-at_max' alt='Error' />
-            </div>
-            <div className='medicines'>
-                <div>
-                    <p>Med 1</p>
-                    <p>Med 2</p>
-                    <p>Med 3</p>
-                    <p>Med 4</p>
-                    <p>Med 5</p>
-                </div>
-                <div>
-                    <p>Symptom 1</p>
-                    <p>Symptom 2</p>
-                    <p>Symptom 3</p>
-                    <p>Symptom 4</p>
-                    <p>Symptom 5</p>
-                </div>
-            </div>
+            {
+                !searching ?
+                <NotSearchResults />
+                :
+                <SearchResults data = {data} searchResults= {searchResults ? searchResults : null} />
+            }
         </main>
     </>
-);
+    )
+}
 
 export default Homepage

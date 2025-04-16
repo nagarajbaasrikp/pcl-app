@@ -7,8 +7,8 @@ const Login = () => {
     const doLogin = e => {
         e.preventDefault();
         axios.post('http://localhost:3001/users/login', {
-            email: e.target.email.value,
-            password: e.target.password.value
+                        email: e.target.email.value,
+password: e.target.password.value
         }).then(res => {
             console.log(res.data.token)
             console.log(res.data.id)
@@ -23,6 +23,7 @@ const Login = () => {
 
     return (
         <div>
+            <h2>Login</h2>
             <form onSubmit={doLogin}>
                 <label htmlFor='email'>Email</label>
                 <input name='email' placeholder='Enter email' />

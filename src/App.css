@@ -74,8 +74,13 @@
 .Lower-app-bar-item {
   text-align: center;
   width: 20%;
-  font-size: small;
   vertical-align: middle;
+}
+
+.Lower-app-bar-item .link {
+  text-decoration: none;
+  font-size: small;
+  color: black;
 }
 
 div.jumbotron-wrapper {
@@ -180,38 +185,57 @@ main .shortcuts > span > div:nth-child(2) p {
   width: 40vw;
 }
 
+.img_container {
+  width: 30%;
+}
+
+.img_container img {
+  width: 100%;
+  height: auto;
+}
+
+.submedicines > div {
+  display: flex;
+}
+
+table {
+  width: 90%;
+  margin: 50px auto;
+}
+
+td {
+  width: 12.5%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.about-us {
+  width: 80%;
+  margin: 30px auto;
+  text-align: left;
+}
+
+.services-wrapper {
+  display: flex;
+}
+
+.services ul, .services ul li ul {
+  list-style: none;
+  text-align: left;
+}
+
 footer {
   background-color: #e5f9f8;
   margin: 60px 0px 0px 0px;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer > ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-footer > ul:nth-child(1) {
-  margin: 15% 0px 0px 0px;
-}
-
-footer > ul:nth-child(3) {
-  margin: 10px 0px 0px 0px;
-}
-
-footer ul > ul {
-  width: 20%;
-}
-
-footer ul ul li {
-  width: 100%;
-}
-
-footer ul li p {
-  text-align: center;
+  list-style: none;
+  line-height: 150%;
 }
